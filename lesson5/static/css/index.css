@@ -180,7 +180,7 @@ footer {
 .footer-nav ul li a:hover {
     color: #3498db;
     /* 滑鼠懸停時的連結顏色 */
-    /* background-color: rgba(44, 62, 80, 0.05); */
+    background-color: rgba(103, 9, 218, 0.474);
     /* 可選的懸停背景色 */
     text-decoration: underline;
     /* 根據 footer.png, 懸停時可能有底線 */
