@@ -14,6 +14,12 @@ def classes():
 @app.route("/news")
 def news():
     return render_template("news.html.jinja2")
+@app.route("/traffic")
+def traffic():
+    return render_template("traffic.html.jinja2")
+@app.route("/contact")
+def contact():
+    return render_template("contact.html.jinja2")
 
 @app.route("/about")
 def about():
