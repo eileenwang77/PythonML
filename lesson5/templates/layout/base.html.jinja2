@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}職能發展學院{% endblock %}  </title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
 </head>
 <body>
     <header class="site-header">
@@ -14,9 +14,9 @@
             </div>
             <nav class="main-navigation">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">課程規劃</a></li>
-                    <li><a href="#">最新消息</a></li>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('classes')}}">課程規劃</a></li>
+                    <li><a href="{{url_for('news')}}">最新消息</a></li>
                     <li><a href="#">交通資訊</a></li>
                     <li><a href="#">聯絡我們</a></li>
                 </ul>
