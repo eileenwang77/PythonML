@@ -1,0 +1,171 @@
+/* 基本樣式重設 (可選，但推薦) */
+body,
+h1,
+p,
+ul,
+li,
+figure,
+figcaption,
+span {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* 通用現代字體 */
+    line-height: 1.6;
+    color: #333;
+    /* 主要文字顏色 */
+}
+
+/* Footer 整體樣式 */
+footer {
+    background-color: #B0C4DE;
+    /* 根據 footer.png 的淺藍色背景，您可能需要精確調整此顏色 */
+    color: #2c3e50;
+    /* 頁腳文字顏色，根據 footer.png 看起來是深色文字 */
+    padding: 20px 0;
+    /* 上下內距 */
+    font-size: 14px;
+    /* 基礎字號 */
+}
+
+.footer-container {
+    max-width: 1140px;
+    /* 限制內容最大寬度，使其與常見網頁佈局一致 */
+    margin: 0 auto;
+    /* 水平居中 */
+    padding: 0 20px;
+    /* 左右內距，防止內容緊貼邊緣 */
+}
+
+/* 頁腳上半部：Logo 和導覽 */
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    /* 在小螢幕上換行 */
+    justify-content: space-between;
+    /* Logo 和導覽分別在兩側 */
+    align-items: center;
+    /* 垂直居中對齊 */
+    padding-bottom: 15px;
+    /* 與底部版權區域的間隔 */
+    border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+    /* 輕微的分隔線，顏色可調整 */
+    margin-bottom: 15px;
+    /* 與底部版權區域的間隔 */
+}
+
+/* Logo 區域 */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    /* 圖示和文字垂直居中 */
+}
+
+.footer-logo .logo-img {
+    width: 30px;
+    /* Logo 圖片寬度，根據 footer.png 調整 */
+    height: 30px;
+    /* Logo 圖片高度 */
+    margin-right: 8px;
+    /* Logo 和文字之間的間距 */
+    /* 如果您的假圖是方形的，可以考慮添加 border-radius: 50%; 使其變圓 */
+}
+
+.footer-logo .logo-text {
+    font-size: 1.1em;
+    /* Logo 文字大小 */
+    font-weight: bold;
+    /* Logo 文字粗細 */
+    color: #2c3e50;
+    /* Logo 文字顏色 */
+}
+
+/* 導覽連結區域 */
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    /* 在小螢幕上換行 */
+    gap: 15px;
+    /* 連結之間的間距 */
+}
+
+.footer-nav ul li a {
+    text-decoration: none;
+    color: #2c3e50;
+    /* 連結文字顏色 */
+    padding: 5px 8px;
+    /* 連結內距，增加點擊區域 */
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    border-radius: 4px;
+    /* 輕微圓角 */
+}
+
+.footer-nav ul li a:hover {
+    color: #3498db;
+    /* 滑鼠懸停時的連結顏色 */
+    /* background-color: rgba(44, 62, 80, 0.05); */
+    /* 可選的懸停背景色 */
+    text-decoration: underline;
+    /* 根據 footer.png, 懸停時可能有底線 */
+}
+
+/* 底部版權區域 */
+.footer-bottom {
+    text-align: right;
+    /* 版權文字靠右對齊，根據 footer.png */
+    font-size: 0.85em;
+    /* 版權文字大小 */
+    color: #555;
+    /* 版權文字顏色，比主要文字稍淺 */
+}
+
+/* 響應式設計：針對較小螢幕的調整 */
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        /* Logo 和導覽垂直堆疊 */
+        align-items: flex-start;
+        /* 左對齊 */
+    }
+
+    .footer-logo {
+        margin-bottom: 15px;
+        /* Logo 和導覽之間的間距 */
+    }
+
+    .footer-nav ul {
+        justify-content: flex-start;
+        /* 連結從左開始排列 */
+        gap: 10px 12px;
+        /* 調整間距 */
+    }
+
+    .footer-nav ul li a {
+        padding: 5px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        /* 在小螢幕上，版權文字居中 */
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo .logo-text {
+        font-size: 1em;
+    }
+
+    .footer-nav ul li a {
+        font-size: 0.9em;
+    }
+
+    .footer-bottom {
+        font-size: 0.8em;
+    }
+}

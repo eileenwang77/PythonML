@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer 範例</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <main style="min-height: calc(100vh - 150px); padding: 20px; background-color: #f4f4f4;">
+        <h1>網頁主要內容區域</h1>
+        <p>此處為頁面主體，用於演示頁腳的相對位置。</p>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="https://via.placeholder.com/40x40?text=JH" alt="JustHome Logo 預留位置" class="logo-img">
+                    <span class="logo-text">JustHome</span>
+                </div>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#">Discover</a></li>
+                        <li><a href="#">Quick Link</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Our Address</a></li>
+                        <li><a href="#">Get App</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> 職能發展學院. 版權所有.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // 自動更新年份
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
