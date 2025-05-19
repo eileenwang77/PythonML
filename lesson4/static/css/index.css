@@ -9,6 +9,84 @@ body {
     /* 頁面預設背景色 */
 }
 
+.site-header .container {
+    /* 確保 .container 是一個定位上下文，以便 .main-navigation.toggled 相對它定位 */
+    /* 您可能已經有 display: flex; justify-content: space-between; align-items: center; 等樣式 */
+    position: relative;
+}
+
+/* 手機版預設隱藏導覽列，顯示選單按鈕 */
+.menu-toggle {
+    display: block;
+    /* 或 inline-block, flex，確保在手機上可見 */
+    /* 您可能需要添加 float: right; 或在 flex 容器中調整順序/對齊 */
+}
+
+.main-navigation {
+    display: none;
+    /* 手機上預設隱藏 */
+}
+
+.main-navigation.toggled {
+    display: block;
+    /* 或 flex, grid - 根據您的選單項目佈局 */
+    position: absolute;
+    /* 關鍵：使其脫離文檔流 */
+    top: 100%;
+    /* 定位在 header 的正下方 */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    /* 設定背景色，避免透明 */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    /* 可選：增加陰影效果 */
+    z-index: 1000;
+    /* 確保在其他內容之上 */
+}
+
+/* 桌面版樣式 (範例斷點，請根據您的設計調整) */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+        /* 桌面版隱藏選單按鈕 */
+    }
+
+    .main-navigation {
+        display: flex;
+        /* 或 block，根據桌面佈局調整 */
+        position: static;
+        /* 恢復靜態定位 */
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        z-index: auto;
+    }
+
+    .main-navigation.toggled {
+        /* 如果 .toggled class 可能因視窗縮放而殘留到桌面版，重置特定樣式 */
+        position: static;
+        /* 其他必要的重置 */
+    }
+
+    .main-navigation ul {
+        display: flex;
+        /* 讓選單項目水平排列 */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-navigation ul li {
+        margin-left: 20px;
+        /* 選單項目間距 */
+    }
+
+    .main-navigation ul li:first-child {
+        margin-left: 0;
+    }
+}
+
+
 .container {
     width: 90%;
     max-width: 1200px;
