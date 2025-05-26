@@ -1,0 +1,410 @@
+/* --- 基本重置與設定 --- */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* 使用通用無襯線字體 */
+    margin: 0;
+    background-color: #ffffff;
+    /* 假設主網頁背景為白色 */
+    color: #333;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 整體區塊 (homes-for-you-section) --- */
+.homes-for-you-section {
+    background-color: #F8F9FA;
+    /* 淺灰色背景 */
+    padding: 60px 0;
+    /* 上下內邊距 */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.homes-for-you-section__container {
+    max-width: 1140px;
+    /* 最大寬度 */
+    margin: 0 auto;
+    /* 水平置中 */
+    padding: 0 15px;
+    /* 左右內邊距，用於 RWD */
+    box-sizing: border-box;
+}
+
+/* --- 標題區域 (homes-for-you-section__header) --- */
+.homes-for-you-section__header {
+    text-align: center;
+    /* 置中顯示 */
+    margin-bottom: 40px;
+    /* 與輪播區塊的間距 */
+}
+
+.homes-for-you-section__title {
+    font-size: 32px;
+    /* 字體較大 */
+    font-weight: bold;
+    /* 加粗 */
+    color: #343A40;
+    /* 深灰色 */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.homes-for-you-section__subtitle {
+    font-size: 16px;
+    /* 字體較小 */
+    color: #6C757D;
+    /* 灰色 */
+    margin: 0;
+}
+
+/* --- 輪播容器 (homes-for-you-section__carousel-wrapper) --- */
+.homes-for-you-section__carousel-wrapper {
+    position: relative;
+    /* 相對定位，供箭頭使用 */
+    overflow: hidden;
+    /* 隱藏超出範圍的卡片 */
+    margin: 0 -15px;
+    /* 抵銷容器的 padding，讓卡片能貼近邊緣 */
+    padding: 0 15px;
+    /* 重新加上 padding */
+}
+
+/* --- 輪播軌道 (homes-for-you-section__carousel-track) --- */
+.homes-for-you-section__carousel-track {
+    display: flex;
+    /* 使用 Flexbox 排列 */
+    gap: 30px;
+    /* 卡片間距 */
+    transition: transform 0.5s ease-in-out;
+    /* 輪播效果 */
+    padding-bottom: 20px;
+    /* 為陰影和分頁點留空間 */
+}
+
+/* --- 房源卡片 (property-card) --- */
+.property-card {
+    flex: 0 0 calc(33.333% - 20px);
+    /* 大螢幕顯示 3 張 (33.333% 減去部分間距) */
+    min-width: 0;
+    /* 確保 flex 縮放正常 */
+    box-sizing: border-box;
+}
+
+.property-card__container {
+    background-color: #ffffff;
+    /* 白色背景 */
+    border-radius: 8px;
+    /* 圓角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 輕微陰影 */
+    overflow: hidden;
+    /* 確保圖片圓角生效 */
+    display: flex;
+    /* 方便內部佈局 */
+    flex-direction: column;
+    height: 100%;
+    /* 確保卡片等高 */
+}
+
+/* --- 圖片區域 (property-card__image-wrapper) --- */
+.property-card__image-wrapper {
+    position: relative;
+    /* 相對定位，供標籤使用 */
+}
+
+.property-card__image-wrapper img {
+    width: 100%;
+    height: 230px;
+    /* 固定高度 */
+    object-fit: cover;
+    /* 裁剪圖片以填滿 */
+}
+
+/* --- 狀態標籤 (property-card__status-badge) --- */
+.property-card__status-badge {
+    position: absolute;
+    /* 絕對定位 */
+    top: 15px;
+    left: 15px;
+    background-color: #28a745;
+    /* 預設深綠色 (FOR SALE) */
+    color: #ffffff;
+    /* 白色文字 */
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.property-card__status-badge--rent {
+    background-color: #17a2b8;
+    /* 藍綠色 (FOR RENT - 範例，可調整) */
+}
+
+.property-card__status-badge--featured {
+    background-color: #ffc107;
+    /* 黃色 (FEATURED) */
+    left: auto;
+    /* 取消左邊定位 */
+    right: 15px;
+    /* 定位到右邊 */
+}
+
+/* 如果有多個標籤，調整第二個標籤的位置 */
+.property-card__status-badge--featured:not(:first-child) {
+    top: 15px;
+    /* 如果 Featured 是第二個，確保它在右邊 */
+    left: auto;
+    right: 15px;
+}
+
+/* 如果 Featured 是第一個，Sale/Rent 是第二個 */
+.property-card__status-badge:not(:first-child):not(.property-card__status-badge--featured) {
+    top: 50px;
+    /* 往下移 */
+    left: 15px;
+    right: auto;
+}
+
+
+/* --- 內容區域 (property-card__content) --- */
+.property-card__content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* 讓內容區域填滿卡片剩餘空間 */
+}
+
+.property-card__header {
+    display: flex;
+    /* 使用 Flexbox */
+    justify-content: space-between;
+    /* 左右對齊 */
+    align-items: flex-start;
+    /* 頂部對齊 */
+    margin-bottom: 10px;
+}
+
+.property-card__name {
+    font-size: 18px;
+    /* 適中大小 */
+    font-weight: bold;
+    /* 加粗 */
+    color: #343A40;
+    /* 深灰色 */
+    margin: 0;
+    flex-grow: 1;
+    /* 讓名稱佔用更多空間 */
+    padding-right: 10px;
+    /* 與價格的間距 */
+}
+
+.property-card__price {
+    font-size: 18px;
+    /* 稍大字體 */
+    font-weight: bold;
+    /* 加粗 */
+    color: #FD7E14;
+    /* 橘紅色 */
+    margin: 0;
+    white-space: nowrap;
+    /* 防止價格換行 */
+}
+
+.property-card__location {
+    font-size: 14px;
+    color: #6C757D;
+    /* 灰色 */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.property-card__location i {
+    margin-right: 8px;
+    /* 圖標與文字間距 */
+    color: #6C757D;
+}
+
+/* --- 房源規格列表 (property-card__specs) --- */
+.property-card__specs {
+    display: flex;
+    /* 使用 Flexbox 排列 */
+    gap: 15px;
+    /* 項目間距 */
+    margin-top: auto;
+    /* 推到底部 */
+    padding-top: 15px;
+    /* 與上方內容的間距 */
+    border-top: 1px solid #E9ECEF;
+    /* 分隔線 */
+    flex-wrap: wrap;
+    /* 允許換行 */
+}
+
+.property-card__spec-item {
+    font-size: 14px;
+    color: #6C757D;
+    /* 灰色 */
+    display: flex;
+    align-items: center;
+}
+
+.property-card__spec-item i {
+    margin-right: 8px;
+    /* 圖標與文字間距 */
+    color: #6C757D;
+}
+
+/* --- 導航箭頭 (carousel-arrow) --- */
+.carousel-arrow {
+    position: absolute;
+    /* 絕對定位 */
+    top: 50%;
+    /* 垂直置中 */
+    transform: translateY(-50%);
+    /* 精確垂直置中 */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* 半透明白色背景 */
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    /* 圓形按鈕 */
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.carousel-arrow--prev {
+    left: 0px;
+    /* 左側位置 */
+}
+
+.carousel-arrow--next {
+    right: 0px;
+    /* 右側位置 */
+}
+
+/* --- 分頁指示點 (carousel-pagination) --- */
+.carousel-pagination {
+    text-align: center;
+    /* 水平置中 */
+    margin-top: 30px;
+    /* 與輪播內容的間距 */
+}
+
+.carousel-pagination__dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    /* 預設顏色 */
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-pagination__dot--active {
+    background-color: #FD7E14;
+    /* 啟用時的顏色 (橘紅色) */
+    transform: scale(1.2);
+    /* 稍微放大 */
+}
+
+/* --- 響應式設計 (RWD) --- */
+
+/* 中螢幕 (Tablet, 576px - 991px) */
+@media (max-width: 991px) {
+    .property-card {
+        flex: 0 0 calc(50% - 15px);
+        /* 顯示 2 張 */
+    }
+
+    .homes-for-you-section__carousel-track {
+        gap: 30px;
+    }
+}
+
+/* 小螢幕 (Mobile, < 576px) */
+@media (max-width: 575px) {
+    .property-card {
+        flex: 0 0 calc(100% - 30px);
+        /* 顯示 1 張 */
+        margin: 0 15px;
+        /* 讓單張卡片置中 */
+    }
+
+    .homes-for-you-section__carousel-track {
+        /* 不需要 gap，因為只有一張 */
+        /* 讓 track 也有些 padding，避免卡片貼邊 */
+        padding-left: 15px;
+        padding-right: 15px;
+        gap: 0;
+        /* 移除 gap */
+    }
+
+    /* 修正移動，確保第一張在中間 */
+    .property-card:first-child {
+        margin-left: 0;
+    }
+
+    .property-card:last-child {
+        margin-right: 0;
+    }
+
+
+    .homes-for-you-section__title {
+        font-size: 28px;
+    }
+
+    .homes-for-you-section__subtitle {
+        font-size: 14px;
+    }
+
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        /* 或者考慮移到下方 */
+        /* top: auto;
+        bottom: -50px;
+        transform: none; */
+    }
+
+    .carousel-arrow--prev {
+        left: -5px;
+        /* 稍微往內移 */
+    }
+
+    .carousel-arrow--next {
+        right: -5px;
+        /* 稍微往內移 */
+    }
+
+    .homes-for-you-section__carousel-wrapper {
+        margin: 0;
+        /* 移除負 margin */
+        padding: 0;
+        /* 移除 padding */
+    }
+}
