@@ -25,10 +25,16 @@ def classes():
 def new():
     try:
         conn= psycopg2.connect(conn_string)
+        # raise Exception("error fund")  #導到except:
         print("連線成功")
     except OperationalError as e:
         print("連線失敗")
         print(e)
+        return render_template("error.html.jinja2",error_message="資料庫錯誤"),500
+    except:
+        # print("連線失敗")
+        return render_template("error.html.jinja2",error_message="不明的錯誤"),500
+    
     conn.close()
     return render_template("new.html.jinja2")
 
