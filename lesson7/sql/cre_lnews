@@ -1,0 +1,7 @@
+CREATE TABLE public.lnews (
+	id smallserial NOT NULL,
+	subj text NOT NULL,
+	pdate date NULL,
+	cont text NULL,
+	CONSTRAINT lnews_pk PRIMARY KEY (id)
+);
