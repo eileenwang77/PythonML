@@ -26,7 +26,13 @@ def new():
     try:
         conn= psycopg2.connect(conn_string)
         # raise Exception("error fund")  #導到except:
-        print("連線成功")
+        # print("連線成功")
+        with conn.cursor() as cur:
+            sql = "SELECT * FROM lnews"
+            cur.execute(sql)
+        # 取得所有資料
+            rows = cur.fetchall()
+            # print(rows)
     except OperationalError as e:
         print("連線失敗")
         print(e)
@@ -36,7 +42,8 @@ def new():
         return render_template("error.html.jinja2",error_message="不明的錯誤"),500
     
     conn.close()
-    return render_template("new.html.jinja2")
+    # return render_template("new.html.jinja2",rows)
+    return render_template("new.html.jinja2",rows=rows)
 
 @app.route("/traffic")
 def traffic():
