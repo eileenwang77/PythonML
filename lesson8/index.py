@@ -28,7 +28,8 @@ def new():
         # raise Exception("error fund")  #導到except:
         # print("連線成功")
         with conn.cursor() as cur:
-            sql = "SELECT * FROM lnews"
+            sql = """SELECT * FROM lnews 
+                  order by pdate desc """
             cur.execute(sql)
         # 取得所有資料
             rows = cur.fetchall()
