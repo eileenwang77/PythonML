@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .accordion-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #ccc;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        .accordion-header {
+            background-color: #f9f9f9;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid transparent;
+        }
+        .accordion-header:hover {
+            background-color: #efefef;
+        }
+        .accordion-title {
+            font-weight: bold;
+            color: #333;
+            margin-right: 15px;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+        .accordion-date {
+            font-size: 0.9em;
+            color: #666;
+            white-space: nowrap;
+            padding-top: 2px;
+        }
+        .accordion-content {
+            padding: 0 15px;
+            background-color: #fff;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+            border-top: 1px solid #e0e0e0;
+        }
+        .accordion-content p {
+            margin: 0 0 10px 0;
+            line-height: 1.6;
+        }
+        .accordion-content p:last-child {
+            margin-bottom: 0;
+        }
+        .accordion-item.active .accordion-header {
+            background-color: #e0e0e0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 120px; /* 請調整此值以符合固定行數需求 */
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Accordion 功能測試</h1>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion-title">這是第一個標題，這個標題可能會非常長，長到需要換行顯示才能完整呈現所有文字內容，確保它能正確地換行。</span>
+                <span class="accordion-date">2023-10-26</span>
+            </div>
+            <div class="accordion-content">
+                <p>這是第一個項目的內容。這段內容將會被限制在一個固定的高度內，如果內容過多，超出的部分將會被隱藏起來，以保持版面的整潔。</p>
+                <p>這是第二行內容。</p>
+                <p>這是第三行內容。</p>
+                <p>這是第四行內容。</p>
+                <p>這是第五行內容。</p>
+                <p>這是第六行內容，如果 max-height 設定正確，此行應部分或完全隱藏。</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion-title">第二個項目的標題</span>
+                <span class="accordion-date">2023-10-25</span>
+            </div>
+            <div class="accordion-content">
+                <p>這是第二個項目的詳細內容。同樣地，這裡的內容也會受到固定高度的限制。</p>
+                <p>多一行看看。</p>
+                <p>再多一行。</p>
+                <p>再多一行。</p>
+                <p>再多一行。</p>
+                <p>再多一行，測試是否會超出高度。</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion-title">第三個標題，這是一個比較短的標題。</span>
+                <span class="accordion-date">2023-10-24</span>
+            </div>
+            <div class="accordion-content">
+                <p>這是第三個項目的內容。</p>
+                <p>只有一行。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        function closeAllItems() {
+            accordionItems.forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+
+        accordionItems.forEach((item, index) => {
+            const header = item.querySelector('.accordion-header');
+
+            header.addEventListener('click', function () {
+                const wasActive = item.classList.contains('active');
+                closeAllItems();
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+
+            if (index === 0) {
+                item.classList.add('active');
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>
