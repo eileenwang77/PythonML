@@ -2,9 +2,57 @@
 {% block title %}
 職能發展學院-最新訊息
 {% endblock %}
+{% block link %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='css/new.css')}}">
+{% endblock %}
 
 {% block main %}
-<h1>{{rows}}</h1>
 
+<div class="accordion-container">
+  <h1>最新訊息 Accordion</h1>
 
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion-title">這是第一個標題，這個標題可能會非常長，長到需要換行顯示才能完整呈現所有文字內容，確保它能正確地換行。</span>
+                <span class="accordion-date">2023-10-26</span>
+            </div>
+            <div class="accordion-content">
+                <p>這是第一個項目的內容。這段內容將會被限制在一個固定的高度內，如果內容過多，超出的部分將會被隱藏起來，以保持版面的整潔。</p>
+                <p>這是第二行內容。</p>
+                <p>這是第三行內容。</p>
+                <p>這是第四行內容。</p>
+                <p>這是第五行內容。</p>
+                <p>這是第六行內容，如果 max-height 設定正確，此行應部分或完全隱藏。</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion-title">第二個項目的標題</span>
+                <span class="accordion-date">2023-10-25</span>
+            </div>
+            <div class="accordion-content">
+                <p>這是第二個項目的詳細內容。同樣地，這裡的內容也會受到固定高度的限制。</p>
+                <p>多一行看看。</p>
+                <p>再多一行。</p>
+                <p>再多一行。</p>
+                <p>再多一行。</p>
+                <p>再多一行，測試是否會超出高度。</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="accordion-title">第三個標題，這是一個比較短的標題。</span>
+                <span class="accordion-date">2023-10-24</span>
+            </div>
+            <div class="accordion-content">
+                <p>這是第三個項目的內容。</p>
+                <p>只有一行。</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/new.js')}}"></script>
 {% endblock %}
