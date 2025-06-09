@@ -45,7 +45,7 @@ def classes(course_types):
         FROM "進修課程"
         WHERE
             課程類別 ='{course_types}'
-        LIMIT 6; 
+        LIMIT 9; 
         """
         cur.execute(sql_course)
         # 取得所有資料
