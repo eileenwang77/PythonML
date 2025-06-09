@@ -26,7 +26,8 @@ def classes():
         # 取得所有資料
         temps = cur.fetchall()
     # print(temps)
-    kinds= [kind[0] for kind in temps]    
+    kinds= [kind[0] for kind in temps]  
+    kinds.reverse() 
     return render_template("classes.html.jinja2",kinds=kinds)
 
 @app.route("/new")
