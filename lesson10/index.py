@@ -31,7 +31,28 @@ def classes(course_types):
     # print(temps)
     kinds= [kind[0] for kind in temps]  
     kinds.reverse() 
-    return render_template("classes.html.jinja2",kinds=kinds)
+    
+    with conn.cursor() as cur:
+        sql_course = f"""
+        SELECT
+	        課程名稱,
+	        老師,
+	        進修人數,
+	        報名開始日期,
+	        報名結束日期,
+	        課程內容 ,
+	        進修費用
+        FROM "進修課程"
+        WHERE
+            --課程類別 = {"'"+course_types+"'"}
+             課程類別 ='{course_types}'
+        LIMIT 6; 
+        """
+        cur.execute(sql_course)
+        # 取得所有資料
+        course_data = cur.fetchall()
+    
+    return render_template("classes.html.jinja2",kinds=kinds,course_data=course_data)
 
 @app.route("/new")
 def new():
