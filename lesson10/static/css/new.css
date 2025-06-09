@@ -1,0 +1,73 @@
+.accordion-container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    background-color: #f9f9f9;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid transparent;
+}
+
+.accordion-header:hover {
+    background-color: #efefef;
+}
+
+.accordion-title {
+    font-weight: bold;
+    color: #333;
+    margin-right: 15px;
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+.accordion-date {
+    font-size: 0.9em;
+    color: #666;
+    white-space: nowrap;
+    padding-top: 2px;
+}
+
+.accordion-content {
+    padding: 0 15px;
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+    border-top: 1px solid #e0e0e0;
+}
+
+.accordion-content p {
+    margin: 0 0 10px 0;
+    line-height: 1.6;
+}
+
+.accordion-content p:last-child {
+    margin-bottom: 0;
+}
+
+.accordion-item.active .accordion-header {
+    background-color: #e0e0e0;
+}
+
+.accordion-item.active .accordion-content {
+    height: 120px;
+    /* 請調整此值以符合固定行數需求 */
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
