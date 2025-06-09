@@ -27,7 +27,14 @@
             #}
                        
             {%for course in  course_data%}  
-
+            <div class="card-item">
+                <div class="card-icon">
+                    <!-- Placeholder SVG. Replace with actual SVG content or <img src="{{ course[6] }}"> if using img tags for SVGs -->
+                    <svg class="icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="4" fill="#E0E0E0"/>
+                        <path d="M16 8 L16 24 M8 16 L24 16" stroke="#1E1E1E" stroke-width="3"/>
+                    </svg>
+                </div>
                 <div class="card-content">
                     <h3 class="card-title">{{course[0]}}</h3>
                     <p class="card-description">{{course[1]}}</p>
@@ -35,6 +42,6 @@
             </div>
             {% endfor %}
         </div>
-    </div>
+</div>
 <script src="{{ url_for('static',filename='js/classes.js')}}"></script>
 {% endblock %}
