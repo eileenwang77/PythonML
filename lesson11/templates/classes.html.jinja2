@@ -27,6 +27,19 @@
             #}
                        
             {%for course in  course_data%}  
+                <div class="card">
+        <div class="card-group">資通訊群組</div>
+        <div class="card-title">Python視窗網路爬蟲</div>
+        <div class="card-details">
+            <div class="card-detail-item">進修人數:25</div>
+            <div class="card-detail-item">進修時數:64小時</div>
+            <div class="card-detail-item">進修費用:1400元</div>
+            <div class="card-detail-item">上課時間:週二、四 08:30~17:05</div>
+            <div class="card-detail-item">開始日期:114.07.08</div>
+        </div>
+        <div class="card-divider"></div>
+    </div>
+            {#
             <div class="card-item">
                 <div class="card-icon">
                     <!-- Placeholder SVG. Replace with actual SVG content or <img src="{{ course[6] }}"> if using img tags for SVGs -->
@@ -40,6 +53,7 @@
                     <p class="card-description">{{course[1]}}</p>
                 </div>
             </div>
+            #}
             {% endfor %}
         </div>
 </div>
