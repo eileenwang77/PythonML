@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 import os
 from dotenv import load_dotenv
 import psycopg2
@@ -33,7 +33,7 @@ def classes(course_types):
     kinds.reverse() 
     
     with conn.cursor() as cur:
-        sql_course = f"""
+        sql_course = """
         SELECT
             課程名稱,
 	        老師,
@@ -54,16 +54,19 @@ def classes(course_types):
         cur.execute(sql_course,(course_types,))
         # 取得所有資料
         course_data = cur.fetchall()
+        page=request.args.get('page',1,type=int)  #從網址參數取得頁碼 預設1
         per_page=6   #每頁筆數
         total = len(course_data)
         total_pages= (total + per_page -1)  // per_page   #count_tt_pages
-        page =2
+        # page =6
         start =(page-1)*per_page
         end= start +per_page
         items=course_data[start:end]
     
     
-    return render_template("classes.html.jinja2",kinds=kinds,course_data=course_data)
+    # return render_template("classes.html.jinja2",kinds=kinds,course_data=course_data)
+        # return render_template("classes.html.jinja2",kinds=kinds,course_data=items)
+        return render_template("classes.html.jinja2",kinds=kinds,course_data=items,page=page,total_pages=total_pages)
 
 @app.route("/new")
 def new():
