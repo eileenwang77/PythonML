@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片網格組件</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="card-grid-container {% if container_class %}{{ container_class }}{% endif %}">
+        <div class="cards-wrapper">
+            {# Simulating Jinja2 loop with sample data. 
+               In a real Jinja2 environment, you would pass `cards` from your backend.
+               card_limit is also a potential Jinja2 variable.
+            #}
+            {% set cards_data = [
+                {
+                    'icon': 'placeholder.svg',
+                    'title': '課程標題一',
+                    'description': '這是課程一的詳細描述文字，說明課程內容和學習目標。'
+                },
+                {
+                    'icon': 'placeholder.svg',
+                    'title': '卡片標題二',
+                    'description': '這是卡片二的描述文字，提供更多相關信息和細節。'
+                },
+                {
+                    'icon': 'placeholder.svg',
+                    'title': '職能發展項目',
+                    'description': '關於職能發展項目的介紹，幫助提升專業技能。'
+                },
+                {
+                    'icon': 'placeholder.svg',
+                    'title': '技術研討會',
+                    'description': '最新的技術研討會信息，涵蓋前沿科技和趨勢。'
+                }
+            ] %}
+
+            {% for card in cards_data %}
+            <div class="card-item">
+                <div class="card-icon">
+                    <!-- Placeholder SVG. Replace with actual SVG content or <img src="{{ card.icon }}"> if using img tags for SVGs -->
+                    <svg class="icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="4" fill="#E0E0E0"/>
+                        <path d="M16 8 L16 24 M8 16 L24 16" stroke="#1E1E1E" stroke-width="3"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ card.title }}</h3>
+                    <p class="card-description">{{ card.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f0f0; /* Light gray background for contrast */
+    display: flex;
+    justify-content: center;
+    padding-top: 20px; /* Add some top padding for better viewing */
+    padding-bottom: 20px;
+}
+
+.card-grid-container {
+    max-width: 1200px;
+    padding: 64px;
+    background: #FFFFFF;
+    box-sizing: border-box; /* Ensures padding doesn't add to max-width */
+    width: 100%; /* Default to full width for smaller screens */
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px; /* Default gap for desktop */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Align items to the start */
+}
+
+.card-item {
+    display: flex;
+    gap: 24px; /* Icon and text spacing */
+    align-items: flex-start;
+    flex: 0 0 301.33px; /* Desktop fixed width */
+    /* min-height to ensure cards have some body even if content is very short */
+    min-height: 100px; 
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.card-icon .icon {
+    width: 32px;
+    height: 32px;
+    /* SVG specific styling if needed, e.g., fill color for paths */
+}
+
+.card-icon .icon path,
+.card-icon .icon rect,
+.card-icon .icon circle {
+    stroke: #1E1E1E; /* Default stroke color for SVG elements */
+    stroke-width: 3px; /* Default stroke width */
+}
+
+.card-content {
+    flex: 1; /* Allow content to take remaining space */
+    display: flex;
+    flex-direction: column;
+    /* gap: 16px; This was in the spec, but title margin-bottom and p margin-top might be better */
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; /* Semi-bold */
+    font-size: 24px;
+    line-height: 1.2em;
+    letter-spacing: -0.02em; /* -2% */
+    color: #1E1E1E; /* Deep gray */
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 8px; /* Space between title and description */
+}
+
+.card-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 16px;
+    line-height: 1.4em;
+    color: #757575; /* Medium gray */
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Tablet version (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .card-grid-container {
+        padding: 48px;
+        /* max-width: 100%; /* Container takes full width */
+    }
+
+    .cards-wrapper {
+        gap: 48px; /* Card spacing */
+        /* justify-content: space-around; /* Distribute space if fewer than 3 cards */
+    }
+
+    .card-item {
+        flex-grow: 1; /* Allow cards to grow */
+        flex-basis: calc(50% - 24px); /* Aim for 2 cards per row, accounting for gap */
+        max-width: calc(50% - 24px); /* Ensure it doesn't exceed 50% with gap */
+        /* For 2-3 cards, you might need more complex logic or allow flex-wrap to handle it */
+        /* A common approach for 2-3 is to set a min-width and let flexbox wrap */
+        min-width: 280px; /* Example min-width */
+    }
+}
+
+/* Mobile version (<768px) */
+@media (max-width: 767px) {
+    .card-grid-container {
+        padding: 24px;
+        /* max-width: 100%; */
+    }
+
+    .cards-wrapper {
+        gap: 32px; /* Card spacing */
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    .card-item {
+        flex: 1 1 100%; /* Card takes full width */
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-description {
+        font-size: 14px;
+    }
+}

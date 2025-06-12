@@ -1,0 +1,213 @@
+body {
+    font-family: 'Inter', sans-serif;
+    /* 假設 Inter 字體已載入 */
+    margin: 0;
+    padding: 20px;
+    /* 方便預覽 */
+    background-color: #f0f0f0;
+    /* 方便預覽 */
+}
+
+.course-tabs {
+    max-width: 1174px;
+    width: 100%;
+    /* 可調整為 100% 適應容器 */
+    margin: 0 auto;
+    /* 置中 */
+}
+
+.tab-container {
+    display: flex;
+    height: 53px;
+}
+
+.tab-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.21;
+    padding: 12px 12px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #000000;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+    /* 加入轉場效果 */
+}
+
+.tab-item.active {
+    background-color: #C3C1C1;
+}
+
+.tab-item:not(.active) {
+    background-color: #E8E6E6;
+}
+
+/* Hover 效果 */
+.tab-item.active:hover {
+    background-color: #B5B3B3;
+}
+
+.tab-item:not(.active):hover {
+    background-color: #D0CECE;
+}
+
+/* 點擊反饋 (可選) */
+.tab-item:active {
+    transform: scale(0.98);
+    /* 輕微縮放 */
+}
+
+.tab-line {
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+}
+.card-grid-container {
+    max-width: 1200px;
+    padding: 64px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    /* Ensures padding doesn't add to max-width */
+    width: 100%;
+    /* Default to full width for smaller screens */
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    /* Default gap for desktop */
+    align-items: flex-start;
+    /* Align items to the top */
+    justify-content: flex-start;
+    /* Align items to the start */
+}
+
+.card-item {
+    display: flex;
+    gap: 24px;
+    /* Icon and text spacing */
+    align-items: flex-start;
+    flex: 0 0 301.33px;
+    /* Desktop fixed width */
+    /* min-height to ensure cards have some body even if content is very short */
+    min-height: 100px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* For hover effect */
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    /* Prevent icon from shrinking */
+}
+
+.card-icon .icon {
+    width: 32px;
+    height: 32px;
+    /* SVG specific styling if needed, e.g., fill color for paths */
+}
+
+.card-icon .icon path,
+.card-icon .icon rect,
+.card-icon .icon circle {
+    stroke: #1E1E1E;
+    /* Default stroke color for SVG elements */
+    stroke-width: 3px;
+    /* Default stroke width */
+}
+
+.card-content {
+    flex: 1;
+    /* Allow content to take remaining space */
+    display: flex;
+    flex-direction: column;
+    /* gap: 16px; This was in the spec, but title margin-bottom and p margin-top might be better */
+}
+
+.card-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    /* Semi-bold */
+    font-size: 24px;
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    /* -2% */
+    color: #1E1E1E;
+    /* Deep gray */
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 8px;
+    /* Space between title and description */
+}
+
+.card-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* Regular */
+    font-size: 16px;
+    line-height: 1.4em;
+    color: #757575;
+    /* Medium gray */
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* RWD 響應式設計 */
+
+/* 手機版 (<768px) */
+@media (max-width: 767.98px) {
+    .course-tabs {
+        /* 容器寬度已是 100% */
+    }
+
+    .tab-item {
+        /* font-size: 18px; */
+        padding: 12px 12px;
+    }
+
+    /* 標籤可能需要垂直排列或允許水平捲動 - 此處示範水平捲動 */
+    .tab-container {
+        overflow-x: auto;
+        /* 允許水平捲動 */
+        -webkit-overflow-scrolling: touch;
+        /* iOS 慣性捲動 */
+    }
+        .card-grid-container {
+            padding: 24px;
+            /* max-width: 100%; */
+        }
+    
+        .cards-wrapper {
+            gap: 32px;
+            /* Card spacing */
+            flex-direction: column;
+            /* Stack cards vertically */
+        }
+    
+        .card-item {
+            flex: 1 1 100%;
+            /* Card takes full width */
+            width: 100%;
+        }
+    
+        .card-title {
+            font-size: 20px;
+        }
+    
+        .card-description {
+            font-size: 14px;
+        }
+}
