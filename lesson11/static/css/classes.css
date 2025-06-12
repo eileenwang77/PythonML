@@ -87,6 +87,7 @@ body {
     /* Align items to the top */
     justify-content: flex-start;
     /* Align items to the start */
+    /* justify-content: space-evenly; */
 }
 
 .card-item {
@@ -94,7 +95,8 @@ body {
     gap: 24px;
     /* Icon and text spacing */
     align-items: flex-start;
-    flex: 0 0 301.33px;
+    flex: 0 0 330.33px;
+    /* flex: 0 0 301.33px; */
     /* Desktop fixed width */
     /* min-height to ensure cards have some body even if content is very short */
     min-height: 100px;
@@ -169,8 +171,8 @@ body {
 
 /*新增for card*/
 .card {
-    width: 274px;
-    height: 180px;
+    width: 310px;
+    height: 210px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -197,15 +199,16 @@ body {
     position: absolute;
     left: 3px;
     top: 22px;
-    width: 222px;
+    width: 304px;
     height: 29px;
     font-family: Inter;
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 500;
+    font-size: 22px;
     line-height: 1.2em;
     letter-spacing: -2%;
     color: #000000;
     text-align: left;
+    padding-bottom: 15px;
 }
 
 .card-details {
@@ -217,6 +220,7 @@ body {
     flex-direction: column;
     gap: 5px;
     /* Spacing between detail items */
+
 }
 
 .card-detail-item {

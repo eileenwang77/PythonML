@@ -35,21 +35,33 @@ def classes(course_types):
     with conn.cursor() as cur:
         sql_course = f"""
         SELECT
-	        課程名稱,
+            課程名稱,
 	        老師,
 	        進修人數,
+	        進修時數,
+	        進修費用,
+	        上課時間,
 	        報名開始日期,
 	        報名結束日期,
 	        課程內容 ,
-	        進修費用
+	        群組,
+	        課程開始日期
         FROM "進修課程"
         WHERE
-            課程類別 ='{course_types}'
-        LIMIT 9; 
+            課程類別 = %s
+        ;
         """
-        cur.execute(sql_course)
+        cur.execute(sql_course,(course_types,))
         # 取得所有資料
         course_data = cur.fetchall()
+        per_page=6   #每頁筆數
+        total = len(course_data)
+        total_pages= (total + per_page -1)  // per_page   #count_tt_pages
+        page =2
+        start =(page-1)*per_page
+        end= start +per_page
+        items=course_data[start:end]
+    
     
     return render_template("classes.html.jinja2",kinds=kinds,course_data=course_data)
 
